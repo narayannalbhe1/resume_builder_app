@@ -12,12 +12,23 @@ class _AchievementScreenState extends State<AchievementScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Achievement'
+        backgroundColor: Colors.deepPurple,
+        leading: IconButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back,color: Colors.white,),
+        ),
+        title: Text("Achievement",style: TextStyle(
+            color: Colors.white
+        ),
         ),centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
-      body: Column(
 
+      body: Column(
+        children: [
+        ],
       ),
     );
   }

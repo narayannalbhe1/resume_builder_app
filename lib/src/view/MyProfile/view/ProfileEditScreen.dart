@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:resume_builder_app/src/view/Experience/view/experience_screen.dart';
+import 'package:resume_builder_app/src/view/Objective/view/ObjectiveScreen.dart';
 import 'package:resume_builder_app/src/view/Project/view/project_screen.dart';
 import 'package:resume_builder_app/src/view/achievement/view/AchievementScreen.dart';
+import 'package:resume_builder_app/src/view/education/view/education_info_screen.dart';
 import 'package:resume_builder_app/src/view/interest/view/interest_screen.dart';
 import 'package:resume_builder_app/src/view/language/view/language_screen.dart';
 import 'package:resume_builder_app/src/view/personal_info/view/personal_info_screen.dart';
+import 'package:resume_builder_app/src/view/skills/view/skill_screen.dart';
 
 class ProfileEditScreen extends StatelessWidget {
   const ProfileEditScreen({Key? key}) : super(key: key);
@@ -13,7 +16,14 @@ class ProfileEditScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
         title: Text('Profile'),
+        automaticallyImplyLeading: false,
       ),
       body: ListView(
         children: [
@@ -33,7 +43,7 @@ class ProfileEditScreen extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => PersonalInfoScreen()),
+                MaterialPageRoute(builder: (context) => ObjectiveScreen()),
               );
             },
           ),
@@ -43,7 +53,7 @@ class ProfileEditScreen extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => PersonalInfoScreen()),
+                MaterialPageRoute(builder: (context) => EducationInfoScreen()),
               );
             },
           ),
@@ -53,7 +63,7 @@ class ProfileEditScreen extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => PersonalInfoScreen()),
+                MaterialPageRoute(builder: (context) => SkillScreen()),
               );
             },
           ),
