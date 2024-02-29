@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class LanguageScreen extends StatefulWidget {
-  const LanguageScreen({super.key});
+class SkillScreen extends StatefulWidget {
+  const SkillScreen({super.key});
 
   @override
-  State<LanguageScreen> createState() => _LanguageScreenState();
+  State<SkillScreen> createState() => _SkillScreenState();
 }
 
-class _LanguageScreenState extends State<LanguageScreen> {
+class _SkillScreenState extends State<SkillScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,15 +19,16 @@ class _LanguageScreenState extends State<LanguageScreen> {
           },
           icon: Icon(Icons.arrow_back,color: Colors.white,),
         ),
-        title: Text("Language",style: TextStyle(
-            color: Colors.white
+        title: Text("Skills",style: TextStyle(
+          color: Colors.white
         ),
         ),centerTitle: true,
         automaticallyImplyLeading: false,
       ),
-
       body: Column(
+        children: [
 
+        ],
       ),
     );
   }

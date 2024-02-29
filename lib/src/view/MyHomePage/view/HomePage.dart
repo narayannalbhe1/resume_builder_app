@@ -22,25 +22,27 @@ class _HomePageState extends State<HomePage> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Container(
-              color: Colors.deepPurple,
-              width: MediaQuery.of(context).size.width,
-              height: 100,
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    SizedBox(width: 10),
-                    TextButton(
-                      onPressed: (){
-                        ProfileEditScreen();
-                      },
-                      child: Text(
+            child: GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context){
+                  return  ProfileEditScreen();
+                }));
+              },
+              child: Container(
+                color: Colors.deepPurple,
+                width: MediaQuery.of(context).size.width,
+                height: 100,
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      SizedBox(width: 10),
+                      Text(
                         'Create New',
                         style: TextStyle(
                           color: Colors.white,
@@ -48,8 +50,8 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
