@@ -1,4 +1,5 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ObjectiveScreen extends StatefulWidget {
@@ -29,44 +30,55 @@ class _ObjectiveScreenState extends State<ObjectiveScreen> {
         ),centerTitle: true,
         automaticallyImplyLeading: false,
       ),
-      body: Column(
-        children: [
-          Container(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                keyboardType: TextInputType.text,
-                controller: objective,
-                maxLines: 5,
-                decoration: InputDecoration(
-                  labelText: 'Objective',
-                  labelStyle: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),
-                  border: OutlineInputBorder(),
-                  hintText: ' ',
-                ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+        return Center(
+          child: SizedBox(
+            width: kIsWeb ? 600 : MediaQuery.of(context).size.width,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        keyboardType: TextInputType.text,
+                        controller: objective,
+                        maxLines: 5,
+                        decoration: InputDecoration(
+                          labelText: 'Objective',
+                          labelStyle: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),
+                          border: OutlineInputBorder(),
+                          hintText: ' ',
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical:100 ,horizontal:  10.0),
+                    child: Container(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                          color: Colors.deepPurple,
+                          borderRadius: BorderRadius.all(Radius.circular(10))
+                      ),
+                      child: TextButton(
+                          onPressed: (){
+
+                          },
+                          child: Text('Save',style: TextStyle(
+                              color: Colors.white,fontSize: 17
+                          ),)),
+                    ),
+                  )
+                ],
               ),
-            ),
           ),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical:100 ,horizontal:  10.0),
-            child: Container(
-              height: 50,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                  color: Colors.deepPurple,
-                  borderRadius: BorderRadius.all(Radius.circular(10))
-              ),
-              child: TextButton(
-                  onPressed: (){
-
-                  },
-                  child: Text('Save',style: TextStyle(
-                      color: Colors.white,fontSize: 17
-                  ),)),
-            ),
-          )
-        ],
+        );
+        },
       ),
     );
   }

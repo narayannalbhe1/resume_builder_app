@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class EducationInfoScreen extends StatefulWidget {
@@ -21,82 +22,93 @@ class _EducationInfoScreenState extends State<EducationInfoScreen> {
       appBar: AppBar(
         title: Text("Education Info"),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: educationItems.length,
-              itemBuilder: (context, index) {
-                final item = educationItems[index];
-                return ListTile(
-                  title: Text(item.degreeName),
-                  subtitle: Text(item.schoolName),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.edit),
-                        onPressed: () {
-                          _editEducationItem(item);
-                        },
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.delete),
-                        onPressed: () {
-                          _deleteEducationItem(index);
-                        },
-                      ),
-                    ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return  Center(
+            child: Container(
+              width: kIsWeb ? 600 : MediaQuery.of(context).size.width,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: educationItems.length,
+                      itemBuilder: (context, index) {
+                        final item = educationItems[index];
+                        return ListTile(
+                          title: Text(item.degreeName),
+                          subtitle: Text(item.schoolName),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                icon: Icon(Icons.edit),
+                                onPressed: () {
+                                  _editEducationItem(item);
+                                },
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.delete),
+                                onPressed: () {
+                                  _deleteEducationItem(index);
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                );
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: GestureDetector(
-              onTap: () {
-                _showAddEducationDialog(context);
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.blueGrey,
-                  border: Border.all(width: 1),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                width: MediaQuery.of(context).size.width,
-                height: 50,
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                        radius: 15,
-                        backgroundColor: Colors.transparent,
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        _showAddEducationDialog(context);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.blueGrey,
+                          border: Border.all(width: 1),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
                         child: Center(
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                            size: 30,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                radius: 15,
+                                backgroundColor: Colors.transparent,
+                                child: Center(
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                    size: 30,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              Text(
+                                'Add Education',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      SizedBox(width: 10),
-                      Text(
-                        'Add Education',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
-          ),
-        ],
+          );
+        },
+
       ),
     );
   }
@@ -177,8 +189,8 @@ class _EducationInfoScreenState extends State<EducationInfoScreen> {
   }
 
   void _editEducationItem(EducationItem item) {
-    // Handle editing of education item
-  }
+
+   }
 
   void _deleteEducationItem(int index) {
     setState(() {
