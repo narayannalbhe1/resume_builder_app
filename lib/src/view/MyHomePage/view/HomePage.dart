@@ -2,9 +2,27 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:resume_builder_app/src/view/MyHomePage/viewmodel/HomePageViewModel.dart';
+import 'package:resume_builder_app/src/view/MyHomePage/viewmodel/TutorialViewModel.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late TutorialViewModel _tutorialViewModel;
+
+  @override
+  void initState() {
+    _tutorialViewModel = TutorialViewModel();
+    _tutorialViewModel.initTutorial(context);
+    Future.delayed(Duration.zero, () {
+      _tutorialViewModel.showTutorial();
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +55,7 @@ class HomePage extends StatelessWidget {
                       },
                       child: Center(
                         child: Container(
+                          key: _tutorialViewModel.keyButton,
                           width:
                               kIsWeb ? 200 : MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
